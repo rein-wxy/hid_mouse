@@ -1,0 +1,28 @@
+{
+    "C_Cpp.intelliSenseEngine": "default",
+    "idf.adapterTargetName": "esp32",
+    "idf.customExtraPaths": "e:\\esp\\tool\\tools\\xtensa-esp-elf-gdb\\11.2_20220823\\xtensa-esp-elf-gdb\\bin;e:\\esp\\tool\\tools\\riscv32-esp-elf-gdb\\11.2_20220823\\riscv32-esp-elf-gdb\\bin;e:\\esp\\tool\\tools\\xtensa-esp32-elf\\esp-2022r1-11.2.0\\xtensa-esp32-elf\\bin;e:\\esp\\tool\\tools\\xtensa-esp32s2-elf\\esp-2022r1-11.2.0\\xtensa-esp32s2-elf\\bin;e:\\esp\\tool\\tools\\xtensa-esp32s3-elf\\esp-2022r1-11.2.0\\xtensa-esp32s3-elf\\bin;e:\\esp\\tool\\tools\\riscv32-esp-elf\\esp-2022r1-11.2.0\\riscv32-esp-elf\\bin;e:\\esp\\tool\\tools\\esp32ulp-elf\\2.35_20220830\\esp32ulp-elf\\bin;e:\\esp\\tool\\tools\\cmake\\3.24.0\\bin;e:\\esp\\tool\\tools\\openocd-esp32\\v0.12.0-esp32-20230921\\openocd-esp32\\bin;e:\\esp\\tool\\tools\\ninja\\1.10.2;e:\\esp\\tool\\tools\\idf-exe\\1.0.3;e:\\esp\\tool\\tools\\ccache\\4.6.2\\ccache-4.6.2-windows-x86_64;e:\\esp\\tool\\tools\\dfu-util\\0.9\\dfu-util-0.9-win64;e:\\esp\\tool\\tools\\esp-rom-elfs\\20220823",
+    "idf.customExtraVars": {
+        "OPENOCD_SCRIPTS": "e:\\esp\\tool\\tools\\openocd-esp32\\v0.12.0-esp32-20230921/openocd-esp32/share/openocd/scripts",
+        "IDF_CCACHE_ENABLE": "1",
+        "ESP_ROM_ELF_DIR": "e:\\esp\\tool\\tools\\esp-rom-elfs\\20220823/"
+    },
+    "idf.espIdfPathWin": "e:\\esp\\espressif\\v5.0.5\\esp-idf",
+    "idf.openOcdConfigs": [
+        "interface/ftdi/esp32_devkitj_v1.cfg",
+        "target/esp32.cfg"
+    ],
+    "idf.portWin": "COM5",
+    "idf.pythonBinPathWin": "e:\\esp\\tool\\python_env\\idf5.0_py3.11_env\\Scripts\\python.exe",
+    "idf.toolsPathWin": "e:\\esp\\tool",
+    "idf.flashType": "UART",
+    "files.associations": {
+        "hidd_le_prf_int.h": "c",
+        "random": "c",
+        "mcpwm.h": "c",
+        "ledc.h": "c",
+        "gpio.h": "c",
+        "task.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "enabled"
+}
