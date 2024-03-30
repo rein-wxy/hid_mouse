@@ -78,6 +78,17 @@ void mpwm_uer_init(void)
 }
 */
 
+void led_task(uint8_t a)
+{
+    for (size_t i = 0; i < a; i++)
+    {
+        gpio_set_level(22,0);
+        vTaskDelay(500 / a / portTICK_PERIOD_MS);
+        gpio_set_level(22,1);
+        vTaskDelay(500 / a / portTICK_PERIOD_MS);
+    }
+}
+
 void touch_uer_task(void)
 {
     gpio_set_level(18,1);
@@ -87,13 +98,13 @@ void touch_uer_task(void)
         //vTaskDelay(2000/ portTICK_PERIOD_MS);
         //ledPwm_update(1,0);
         //vTaskDelay(2000/ portTICK_PERIOD_MS);
-        gpio_set_level(22,0);
-        vTaskDelay(500/ portTICK_PERIOD_MS);
-        if(device_mode == 0)
-            gpio_set_level(22,0);
-        else
-            gpio_set_level(22,1);
-        vTaskDelay(500/ portTICK_PERIOD_MS);
+        if(sec_conn == false)
+            led_task(5);
+        else if(device_mode == 0)
+            led_task(1);
+        else if(device_mode == 1)
+            led_task(2);
+
     }
 }
 void touch_uer(void)

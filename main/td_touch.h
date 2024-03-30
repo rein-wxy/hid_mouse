@@ -10,7 +10,7 @@
 //#include "driver/mcpwm.h"//电机LEDPWM
 //#include "driver/mcpwm_prelude.h"
 
-
+extern bool sec_conn;
 extern uint8_t  device_mode ;
 void touch_uer(void);
 void touch_uer_task(void);

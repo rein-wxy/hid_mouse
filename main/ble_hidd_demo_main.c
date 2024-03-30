@@ -55,12 +55,12 @@
 
 
 static uint16_t hid_conn_id = 0;
-static bool sec_conn = false;
+bool sec_conn = false;
 static bool send_volum_up = false;
 #define CHAR_DECLARATION_SIZE   (sizeof(uint8_t))
 
 static void hidd_event_callback(esp_hidd_cb_event_t event, esp_hidd_cb_param_t *param);
-void mouse_action(uint8_t dat);
+void mouse_action(touch_event dat);
 
 //static int wheel_value[1] = {0};//滚轮
 //模式切换
@@ -68,6 +68,8 @@ uint8_t device_mode = 0;
 static uint8_t off_on = 0;
 #define mouse_mode 0
 #define player_mode 1
+
+static touch_event ble;        //蓝牙任务接收处理队列
 
 
 #define HIDD_DEVICE_NAME            "驾驭"
@@ -183,17 +185,16 @@ static void gap_event_handler(esp_gap_ble_cb_event_t event, esp_ble_gap_cb_param
 
 void hid_demo_task(void *pvParameters)
 {
-    static int wheel_value[1] = {0};//滚轮
+   
     vTaskDelay(1000 / portTICK_PERIOD_MS);
     while(1) {
         if (sec_conn) {
             send_volum_up = true; 
-            xQueueReceive(xQueueWheelHandle,&wheel_value,portMAX_DELAY);//一直阻塞
+            xQueueReceive(xQueueWheelHandle,&ble,portMAX_DELAY);//一直阻塞
 
-             ESP_LOGE(HID_DEMO_TAG, "%d",wheel_value[0]);
             if (send_volum_up) {
                 send_volum_up = false;
-                mouse_action(wheel_value[0]);
+                mouse_action(ble);
             }
         }
         vTaskDelay(10/ portTICK_PERIOD_MS);
@@ -208,15 +209,14 @@ void hid_demo_task(void *pvParameters)
  * 11-滚轮下
  * 播放器
 */
-void mouse_action(uint8_t dat)
+void mouse_action(touch_event dat)
 {
-
-    if(dat == L_middle_key)//模式切换
+    if(dat.key == L_middle_key)//模式切换
     {
         device_mode = ~device_mode;
     }
     if(device_mode == mouse_mode){
-        switch (dat)
+        switch (dat.key)
         {
             case 0: //左键
                 esp_hidd_send_mouse_value(hid_conn_id,1,0,0,0);
@@ -232,15 +232,21 @@ void mouse_action(uint8_t dat)
             case 4: //右
                 esp_hidd_send_mouse_value(hid_conn_id,0,50,0,0);break;
             case 10:
-                esp_hidd_send_mouse_value(hid_conn_id,0,0,0,2);break;
+                esp_hidd_send_mouse_value(hid_conn_id,0,0,0,2);
+                //esp_hidd_send_mouse_value(hid_conn_id,1,0,ble.wheel,0);
+                //esp_hidd_send_mouse_value(hid_conn_id,0,0,0,0);
+                break;
             case 11:
-                esp_hidd_send_mouse_value(hid_conn_id,0,0,0,-2);break;
+                esp_hidd_send_mouse_value(hid_conn_id,0,0,0,-2);
+                //esp_hidd_send_mouse_value(hid_conn_id,1,0,ble.wheel,0);
+                //esp_hidd_send_mouse_value(hid_conn_id,0,0,0,0);
+                break;
             default:
                 break;
         }
     }
     else /*if(device_mode == player_mode)*/{
-        switch (dat)
+        switch (dat.key)
         {
             case 0:
                 off_on = ~off_on;
