@@ -55,7 +55,7 @@
 
 
 static uint16_t hid_conn_id = 0;
-bool sec_conn = false;
+bool sec_conn = false;          //链接状态
 static bool send_volum_up = false;
 #define CHAR_DECLARATION_SIZE   (sizeof(uint8_t))
 
