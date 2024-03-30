@@ -10,6 +10,14 @@
 #include "freertos/event_groups.h"
 #include "freertos/queue.h"
 
+
+typedef struct 
+{
+    int8_t key;
+    int16_t wheel;
+}touch_event;
+
+
 void as5600_task(void);
 void as5600_init(void);
 

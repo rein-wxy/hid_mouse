@@ -3,7 +3,10 @@
 
 static const char *TAG = "key";
 static QueueHandle_t xQueueKeyHandle = NULL;
-static SemaphoreHandle_t xKeySemaphore;
+static SemaphoreHandle_t xKeySemaphore; //信号量
+static touch_event button;              //按键任务队列
+
+
 
 uint8_t allow = 1;
 
@@ -57,7 +60,6 @@ void key_init(void)
 void key_task(void)
 {
     ESP_LOGI(TAG, "key_ruin");
-    int key_state[1] = {0} ;
     volatile int num_tack;
     volatile TickType_t tim_a = 0;
     while(1)
@@ -67,10 +69,10 @@ void key_task(void)
         
         if( key_on == gpio_get_level(num_tack>>3) )
         {
-            key_state[0] = (num_tack&0b00000111);
+            button.key = (num_tack&0b00000111);
            
             //按键信息发送队列 
-            xQueueSendToFront(xQueueWheelHandle,&key_state[0],0);
+            xQueueSendToFront(xQueueWheelHandle,&button,0);
             tim_a = xTaskGetTickCount();
             allow = 1;
         }
@@ -78,8 +80,8 @@ void key_task(void)
         {
             if((xTaskGetTickCount() - tim_a)>200)//1.5s
             {
-                key_state[0] = (num_tack&0b00000111) + 5;
-                xQueueSendToFront(xQueueWheelHandle,&key_state[0],0);
+                button.key = (num_tack&0b00000111) + 5;
+                xQueueSendToFront(xQueueWheelHandle,&button,0);
                 //长按
             }
             allow = 1;

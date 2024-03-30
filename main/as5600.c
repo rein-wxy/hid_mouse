@@ -39,6 +39,7 @@ static const char *TAG = "i2c-simple-example";
 #define RawAngle_Addr                      0x0C 
 
 QueueHandle_t xQueueWheelHandle;//滚轮队列
+touch_event as5600;
 
 /**
  * @brief Read a sequence of bytes from a MPU9250 sensor registers
@@ -90,9 +91,9 @@ void as5600_task(void)
 {
     volatile uint8_t data[2];
     volatile static int angle = 0,last_angle = 0,total_angle = 0,angle_err = 0;
-    xQueueWheelHandle = xQueueCreate(10, sizeof( int8_t));  //创建滚轮数据队列
+    xQueueWheelHandle = xQueueCreate(10, sizeof( touch_event));  //创建滚轮数据队列
 
-    int8_t lValueToSend;
+
 
     //ESP_ERROR_CHECK(i2c_master_init());
     //ESP_LOGI(TAG, "I2C initialized successfully");
@@ -111,28 +112,45 @@ void as5600_task(void)
         total_angle += angle_err; 
         last_angle = angle;
         //ESP_LOGI(TAG, "WHO_AM_I = %d ,  %d", total_angle,angle_err);
+        /*
+            一格一格拨动模式
+        */
         total_err = total_angle - total_last;
         if( (total_err >= 256))
         {
             total_last = total_angle;
-            lValueToSend = 10; 
-            xQueueSendToFront(xQueueWheelHandle,&lValueToSend,0);
+            as5600.key = 10; 
+            xQueueSendToFront(xQueueWheelHandle,&as5600,0);
         }
         else if((total_err <= -256))
         {
             total_last = total_angle;
-            lValueToSend = 11;
-            xQueueSendToFront(xQueueWheelHandle,&lValueToSend,0);
+            as5600.key = 11; 
+            xQueueSendToFront(xQueueWheelHandle,&as5600,0);
         }
         else
         { 
-            lValueToSend = 0;
+            as5600.key = 10; 
             // xQueueSendToFront(xQueueWheelHandle,&lValueToSend,0);
         }
         //ESP_LOGI(TAG, "WHO_AM_I = %d ,  %d", total_angle,angle_err);
+        /*模拟鼠标左键拖动*/
+        //if(total_err >= 2)
+        //{
+        //    as5600.key = 10;
+        //    as5600.wheel = total_err;
+        //    xQueueSendToFront(xQueueWheelHandle,&as5600,0);
+        //}
+        //else if(total_err <=-2)
+        //{
+        //    as5600.key = 10;
+        //    as5600.wheel = total_err;
+        //    xQueueSendToFront(xQueueWheelHandle,&as5600,0);
+        //}
+        //total_last = total_angle;
         data[0] = 0;
         data[1] = 0;
-        vTaskDelay(20/portTICK_PERIOD_MS);
+        vTaskDelay(30/portTICK_PERIOD_MS);//33fps
         /* code */
     }
     

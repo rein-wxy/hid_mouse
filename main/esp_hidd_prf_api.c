@@ -131,7 +131,7 @@ void esp_hidd_send_mouse_value(uint16_t conn_id, uint8_t mouse_button, int8_t mi
     buffer[1] = mickeys_x;           // X
     buffer[2] = mickeys_y;           // Y
     buffer[3] = wheel;           // Wheel
-    buffer[4] = 0;           // AC Pan 类似水平方向的滚轮
+    buffer[4] = 2;           // AC Pan 类似水平方向的滚轮
 
     hid_dev_send_report(hidd_le_env.gatt_if, conn_id,
                         HID_RPT_ID_MOUSE_IN, HID_REPORT_TYPE_INPUT, HID_MOUSE_IN_RPT_LEN, buffer);
