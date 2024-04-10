@@ -7,6 +7,8 @@
 #define LEDC_HS_CH0_GPIO       22				// pwm控制器通道对应GPIO
 #define LEDC_HS_CH0_CHANNEL    LEDC_CHANNEL_0	// LED控制器通道号
 
+static const char *TAG = "touch";
+
 void pwm_uer_init(void)
 {
     gpio_config_t ioConfig = {
@@ -100,11 +102,12 @@ void touch_uer_task(void)
         //vTaskDelay(2000/ portTICK_PERIOD_MS);
         if(sec_conn == false)
             led_task(5);
-        else if(device_mode == 0)
+        if(device_mode == 0)
             led_task(1);
-        else if(device_mode == 1)
+        if(device_mode == 1)
             led_task(2);
-
+        //ESP_LOGI(TAG, "1111");
+        vTaskDelay(100);
     }
 }
 void touch_uer(void)

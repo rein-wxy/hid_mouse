@@ -2,6 +2,7 @@
 #define _TD_TOUCH_H_
 
 #include <stdio.h>
+#include "esp_log.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "freertos/event_groups.h"
@@ -11,7 +12,7 @@
 //#include "driver/mcpwm_prelude.h"
 
 extern bool sec_conn;
-extern uint8_t  device_mode ;
+extern int  device_mode ;
 void touch_uer(void);
 void touch_uer_task(void);
 #endif

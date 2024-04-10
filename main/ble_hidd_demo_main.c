@@ -64,7 +64,9 @@ void mouse_action(touch_event dat);
 
 //static int wheel_value[1] = {0};//滚轮
 //模式切换
-uint8_t device_mode = 0;
+int device_mode = 0;
+int temp_mode = 0;
+
 static uint8_t off_on = 0;
 #define mouse_mode 0
 #define player_mode 1
@@ -72,7 +74,7 @@ static uint8_t off_on = 0;
 static touch_event ble;        //蓝牙任务接收处理队列
 
 
-#define HIDD_DEVICE_NAME            "驾驭"
+#define HIDD_DEVICE_NAME            "驾驭2.0"
 static uint8_t hidd_service_uuid128[] = {
     /* LSB <--------------------------------------------------------------------------------> MSB */
     //first uuid, 16bit, [12],[13] is the value
@@ -213,7 +215,10 @@ void mouse_action(touch_event dat)
 {
     if(dat.key == L_middle_key)//模式切换
     {
-        device_mode = ~device_mode;
+        temp_mode ++;
+        device_mode = temp_mode % 2;
+        if(temp_mode == 200)
+            temp_mode = 0;
     }
     if(device_mode == mouse_mode){
         switch (dat.key)
