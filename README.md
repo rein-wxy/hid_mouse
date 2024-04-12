@@ -10,19 +10,18 @@
 
 主控开发板：使用ESP32 wemos lolin32 lite。有蓝牙/WiFi模块，外设齐全，还集成锂电池充电模块价格也相对便宜14r
 
-<img src="https://github.com/rein-wxy/hid_mouse/blob/main/photo/%E4%B8%BB%E6%8E%A7.jpg" width="200" height="200" alt="抖音小程序"/><br/>
+<img src="https://github.com/rein-wxy/hid_mouse/blob/main/photo/%E4%B8%BB%E6%8E%A7.jpg" width="400" height="200" alt="主控"/><br/>
 
-![image](https://github.com/rein-wxy/hid_mouse/blob/main/photo/%E4%B8%BB%E6%8E%A7.jpg)
 
 
 
 外设:
-![image](https://github.com/rein-wxy/hid_mouse/blob/main/photo/as5600.jpg)
-![image](https://github.com/rein-wxy/hid_mouse/blob/main/photo/%E4%BA%94%E5%90%91%E6%8C%89%E9%94%AE.jpg)
+
+
 1. as5600获取旋钮角度模拟鼠标滚轮
-
+<img src="https://github.com/rein-wxy/hid_mouse/blob/main/photo/as5600.jpg" width="200" height="200" alt="as5600"/><br/>
 2. 五向按键模拟指针x，y方向移动以及鼠标左键（一直在屏幕中间影响视野，还可实现一些简单的操作）
-
+<img src="https://github.com/rein-wxy/hid_mouse/blob/main/photo/%E4%BA%94%E5%90%91%E6%8C%89%E9%94%AE.jpg" width="200" height="200" alt="五向开关"/><br/>
 3. 苹果7p线性马达旋钮反馈（电机驱动有问题，暂时还未加上）
 
 
