@@ -5,6 +5,7 @@
 # 解决方案
 
 暂定功能：可以切歌，滑屏翻书，无线连接
+<img src="https://github.com/rein-wxy/photo/blob/master/hid_mouse/%E5%A4%96%E8%A7%82.jpg" width="550" height="350" alt="主控"/><br/>
 
 ## 硬件
 
