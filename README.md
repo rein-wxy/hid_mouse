@@ -17,7 +17,7 @@
 外设:
 
 1. as5600获取旋钮角度模拟鼠标滚轮
-
+！[image]([hid_mouse/photo/PCB3D图片.jpg at main · rein-wxy/hid_mouse (github.com))
 <img src="https:///github.com/rein-wxy/hid_mouse/photo/as5600.jpg" alt="as5600" style="zoom:50%;" /><img src="https://github.com/rein-wxy/hid_mouse/photo/五向按键.jpg" alt="五向按键" style="zoom:80%;" />
 
 2. 五向按键模拟指针x，y方向移动以及鼠标左键（一直在屏幕中间影响视野，还可实现一些简单的操作）
@@ -28,7 +28,7 @@
 
 ### PCB
 
-![](https://github.com/rein-wxy/hid_mouse/photo/PCB3D图片.jpg)
+![image](https://github.com/rein-wxy/hid_mouse/photo/PCB3D图片.jpg)
 
 ## 软件部分
 
