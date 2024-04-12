@@ -10,7 +10,7 @@
 
 主控开发板：使用ESP32 wemos lolin32 lite。有蓝牙/WiFi模块，外设齐全，还集成锂电池充电模块价格也相对便宜14r
 
-![主控](/github.com/rein-wxy/hid_mouse/photo/主控.jpg)
+![主控]([/](https://github.com/rein-wxy/hid_mouse/photo/主控.jpg)
 
 
 
@@ -18,7 +18,7 @@
 
 1. as5600获取旋钮角度模拟鼠标滚轮
 
-<img src="/github.com/rein-wxy/hid_mouse/photo/as5600.jpg" alt="as5600" style="zoom:50%;" /><img src="\/github.com/rein-wxy/hid_mouse/photo/五向按键.jpg" alt="五向按键" style="zoom:80%;" />
+<img src="https:///github.com/rein-wxy/hid_mouse/photo/as5600.jpg" alt="as5600" style="zoom:50%;" /><img src="https://github.com/rein-wxy/hid_mouse/photo/五向按键.jpg" alt="五向按键" style="zoom:80%;" />
 
 2. 五向按键模拟指针x，y方向移动以及鼠标左键（一直在屏幕中间影响视野，还可实现一些简单的操作）
 
@@ -28,7 +28,7 @@
 
 ### PCB
 
-![](/github.com/rein-wxy/hid_mouse/photo/PCB3D图片.jpg)
+![](https://github.com/rein-wxy/hid_mouse/photo/PCB3D图片.jpg)
 
 ## 软件部分
 
@@ -42,7 +42,7 @@
 
 代码框图--》
 
-![](/github.com/rein-wxy/hid_mouse/photo/程序框图.jpg)
+![](https://github.com/rein-wxy/hid_mouse/photo/程序框图.jpg)
 
 蓝牙键鼠模拟实现，官方实现了一个音量循环加减功能
 
