@@ -96,17 +96,15 @@ void touch_uer_task(void)
     gpio_set_level(18,1);
     while(1)
     {
-        //ledPwm_update(0,1);
-        //vTaskDelay(2000/ portTICK_PERIOD_MS);
-        //ledPwm_update(1,0);
-        //vTaskDelay(2000/ portTICK_PERIOD_MS);
         if(sec_conn == false)
             led_task(5);
-        if(device_mode == 0)
-            led_task(1);
-        if(device_mode == 1)
-            led_task(2);
-        //ESP_LOGI(TAG, "1111");
+        else
+        {
+            if(device_mode == 0)
+                led_task(1);
+            if(device_mode == 1)
+                led_task(2);
+        }
         vTaskDelay(100);
     }
 }

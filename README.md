@@ -26,7 +26,7 @@
 
 ## 软件部分
 
-环境：vscode+idf  //（试过用arduion自由太差不方便）
+环境：vscode+idf  //（试过用arduion不方便）
 
 代码主体：在官方例程ble_hid_device_demo上增添修改
 
@@ -39,6 +39,8 @@
 ![](E:\espproject\hid_mouse\photo\程序框图.jpg)
 
 蓝牙键鼠模拟实现，官方实现了一个音量循环加减功能
+
+### hid_task
 
 ~~~ c
 void hid_demo_task(void *pvParameters)
@@ -88,15 +90,51 @@ void esp_hidd_send_mouse_value(uint16_t conn_id, uint8_t mouse_button, int8_t mi
 void esp_hidd_send_consumer_value(uint16_t conn_id, uint8_t key_cmd, bool key_pressed)
 ~~~
 
+### key_task
+
+使用外部中断：上升下降沿均触发中断
+
+使用队列确保有事件发生才触发执行主任务提高效率。
+
+长按检测：下降沿触发与上升沿触发间隔超过1.5s判断为长按。
+
+``` c
+while(1){
+		xQueueReceive(xQueueKeyHandle,&num_tack,portMAX_DELAY);
+    	vTaskDelay(35/ portTICK_PERIOD_MS);
+        
+        if( key_on == gpio_get_level(num_tack>>3) )
+        {
+            button.key = (num_tack&0b00000111);
+            //按键信息发送队列 
+            xQueueSendToFront(xQueueWheelHandle,&button,0);
+            tim_a = xTaskGetTickCount();
+            allow = 1;
+        }
+        else
+        {
+            if((xTaskGetTickCount() - tim_a)>200)//1.5s
+            {
+                button.key = (num_tack&0b00000111) + 5;
+                xQueueSendToFront(xQueueWheelHandle,&button,0);
+                //长按
+            }
+            allow = 1;
+        } 
+}
+```
 
 
 
+### touch_task
 
+led交互
 
-
-
-
-
+| led   | 状态           |
+| ----- | -------------- |
+| 5闪/s | 蓝牙未连接     |
+| 2闪/s | 鼠标切页模式   |
+| 1闪/2 | 切歌播放器模式 |
 
 
 
@@ -111,7 +149,7 @@ void esp_hidd_send_consumer_value(uint16_t conn_id, uint8_t key_cmd, bool key_pr
 ## 元器件
 
 |AS5600 |旋钮角度获取||
-|---------|--------------|---------|
+|:--------|--------------|---------|
 | |||
 | |||
 | |||

@@ -266,8 +266,6 @@ void mouse_action(touch_event dat)
                     //esp_hidd_send_consumer_value(hid_conn_id, HID_CONSUMER_PAUSE , true);
                     //vTaskDelay(1);
                     //esp_hidd_send_consumer_value(hid_conn_id, HID_CONSUMER_PAUSE, false);
-                    
-            
                 }
                 break;
              case 1:

@@ -1,7 +1,7 @@
 {
     "version":            "1",
     "project_name":       "hid_mouse",
-    "project_version":    "3ac3bee-dirty",
+    "project_version":    "c080de2-dirty",
     "project_path":       "E:/espproject/hid_mouse",
     "idf_path":           "E:/esp/espressif/v5.0.5/esp-idf",
     "build_dir":          "E:/espproject/hid_mouse/build",

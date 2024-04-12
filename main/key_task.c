@@ -70,7 +70,6 @@ void key_task(void)
         if( key_on == gpio_get_level(num_tack>>3) )
         {
             button.key = (num_tack&0b00000111);
-           
             //按键信息发送队列 
             xQueueSendToFront(xQueueWheelHandle,&button,0);
             tim_a = xTaskGetTickCount();
@@ -86,8 +85,5 @@ void key_task(void)
             }
             allow = 1;
         } 
-        
     }
-
-
 }
