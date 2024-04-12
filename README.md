@@ -10,6 +10,8 @@
 
 主控开发板：使用ESP32 wemos lolin32 lite。有蓝牙/WiFi模块，外设齐全，还集成锂电池充电模块价格也相对便宜14r
 
+<img src="https://github.com/rein-wxy/hid_mouse/blob/main/photo/%E4%B8%BB%E6%8E%A7.jpg" width="200" height="200" alt="抖音小程序"/><br/>
+
 ![image](https://github.com/rein-wxy/hid_mouse/blob/main/photo/%E4%B8%BB%E6%8E%A7.jpg)
 
 
