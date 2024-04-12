@@ -16,7 +16,7 @@
 
 
 外设:
-1. as5600获取旋钮角度模拟鼠标滚轮
+1. as5600获取旋钮角度模拟鼠标滚轮.旋钮采用挡圈轴承链接十分丝滑
 <img src="https://github.com/rein-wxy/hid_mouse/blob/main/photo/as5600.jpg" width="200" height="200" alt="as5600"/><br/>
 2. 五向按键模拟指针x，y方向移动以及鼠标左键（一直在屏幕中间影响视野，还可实现一些简单的操作）
 <img src="https://github.com/rein-wxy/hid_mouse/blob/main/photo/%E4%BA%94%E5%90%91%E6%8C%89%E9%94%AE.jpg" width="200" height="200" alt="五向开关"/><br/>
