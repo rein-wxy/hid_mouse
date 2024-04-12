@@ -5,7 +5,7 @@
 # 解决方案
 
 暂定功能：可以切歌，滑屏翻书，蓝牙无线连接
-![image]("https://github.com/rein-wxy/photo/blob/master/hid_mouse/%E5%A4%96%E8%A7%82.jpg" )
+![image](https://github.com/rein-wxy/photo/blob/master/hid_mouse/%E5%A4%96%E8%A7%82.jpg)
 
 ## 硬件
 
